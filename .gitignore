@@ -1,0 +1,29 @@
+# Build output
+bin/
+obj/
+
+# .NET
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+project.lock.json
+project.assets.json
+*.nuget.props
+*.nuget.targets
+
+# Rider / JetBrains
+.idea/
+
+# Visual Studio
+.vs/
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# OS files
+.DS_Store
+Thumbs.db
