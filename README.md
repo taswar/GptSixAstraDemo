@@ -1,5 +1,7 @@
 # Gpt-6-Astra Demo, .NET C# Developer (Microsoft Foundry)
 
+Blog Post: [GPT-6 Astra for C# Developers](https://taswar.zeytinsoft.com/gpt-6-astra-csharp-developers-guide/)
+
 Console sample demonstrating **gpt-6-astra** in Microsoft Foundry via the **Responses API**,
 using `Microsoft.Extensions.AI` for tool calling, structured JSON output, and long-context
 synthesis.
