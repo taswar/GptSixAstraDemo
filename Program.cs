@@ -57,10 +57,10 @@ var messages = new List<ChatMessage>
 
 // Use Case 1: Software Engineering — Deliberate Bug Investigation and Fix Proposal
 Console.WriteLine("Use Case 1: Software Engineering — Deliberate Bug Investigation and Fix Proposal");
-Console.WriteLine("**********************************************************");
+Console.WriteLine("*********************************************************************************");
 var response = await chatClient.GetResponseAsync(messages, chatOptions);
 Console.WriteLine(response.Text);
-Console.WriteLine("**********************************************************");
+Console.WriteLine("*********************************************************************************");
 
 // --- Tool stand-ins for real observability/source-control APIs ---
 
