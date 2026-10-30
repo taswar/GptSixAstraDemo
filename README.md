@@ -1,6 +1,17 @@
-# Gpt-6-Astra Demo, .NET C# Developer (Microsoft Foundry)
+# GPT-6 Astra C# Demo (Microsoft Foundry)
 
-Blog Post: [GPT-6 Astra for C# Developers](https://taswar.zeytinsoft.com/gpt-6-astra-csharp-developers-guide/)
+![GPT-6 Astra now generally available in Microsoft Foundry](https://taswar.zeytinsoft.com/wp-content/uploads/2026/09/GPT-6-Astra-for-CSharp-Developers.png)
+
+[![Build](https://github.com/taswar/GptSixAstraDemo/actions/workflows/dotnet.yml/badge.svg)](https://github.com/taswar/GptSixAstraDemo/actions/workflows/dotnet.yml)
+![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](CONTRIBUTING.md)
+
+- 📖 Full walkthrough: [GPT-6 Astra for C# Developers](https://taswar.zeytinsoft.com/gpt-6-astra-csharp-developers-guide/?utm_source=github&utm_medium=readme&utm_campaign=GptSixAstraDemo&utm_content=walkthrough)
+- ⭐ If this sample helps you, star the repo so other .NET developers can find it.
+- 🔁 Related: [GPT-6.1 Sol C# Demo](https://github.com/taswar/Gpt-6.1-Sol-CSharp-Demo), which uses the same Responses API setup for the next model
+- For more C# samples using other AI models, see [AI models for C# developers](https://taswar.zeytinsoft.com/foundry-ai-models-csharp/?utm_source=github&utm_medium=readme&utm_campaign=GptSixAstraDemo&utm_content=ai-models-hub)
+- For my free ebook on prompt engineering, see [Prompt Engineering for .NET Developers](https://github.com/taswar/PromptEngineeringForDotNetDevelopers)
 
 Console sample demonstrating **gpt-6-astra** in Microsoft Foundry via the **Responses API**,
 using `Microsoft.Extensions.AI` for tool calling, structured JSON output, and long-context
@@ -12,6 +23,16 @@ synthesis.
 This sample calls the model through `OpenAI.Responses.ResponsesClient` against the
 `{endpoint}/openai/v1` surface instead, wrapped as an `IChatClient` via
 `Microsoft.Extensions.AI.OpenAI`.
+
+## Quick start
+
+```powershell
+git clone https://github.com/taswar/GptSixAstraDemo.git
+cd GptSixAstraDemo
+dotnet user-secrets set "AZURE_AI_ENDPOINT" "https://<your-resource-name>.cognitiveservices.azure.com"
+az login
+dotnet run
+```
 
 ## Requirements
 
@@ -87,3 +108,19 @@ already included in this folder.
 5. **Financial Services — Long-Context Synthesis Into an Investment Point of View**
    Combines a filing excerpt and an internal analyst note (read from local text files) into
    a one-page investment point of view: Thesis, Supporting Evidence, Risks, Recommendation.
+
+## Project layout
+
+```
+Program.cs                    Client setup, the five use cases and the tool stand-ins
+GptSixAstraDemo.csproj        .NET 10 project and package references
+northwind-q3-10q-excerpt.txt  Fictional filing excerpt for use case 5
+internal-analyst-note.txt     Fictional analyst note for use case 5
+CONTRIBUTING.md               How to contribute
+.github/workflows/dotnet.yml  Build workflow
+LICENSE                       MIT license
+```
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).

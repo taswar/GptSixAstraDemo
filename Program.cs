@@ -15,7 +15,7 @@ var config = new ConfigurationBuilder()
 var deploymentName = config["AZURE_OPENAI_DEPLOYMENT"] ?? "gpt-6-astra";
 var resourceEndpoint = config["AZURE_AI_ENDPOINT"]
     ?? throw new InvalidOperationException(
-        "AZURE_AI_ENDPOINT is not set. Run: dotnet user-secrets set \"AZURE_AI_ENDPOINT\" \"&lt;your-endpoint&gt;\"");
+        "AZURE_AI_ENDPOINT is not set. Run: dotnet user-secrets set \"AZURE_AI_ENDPOINT\" \"<your-endpoint>\"");
 
 // The Responses API is only reachable on the v1 surface, not the deployments/api-version surface.
 var responsesEndpoint = new Uri($"{resourceEndpoint.TrimEnd('/')}/openai/v1");
