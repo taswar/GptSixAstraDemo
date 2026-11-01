@@ -39,9 +39,9 @@ dotnet run
 - [.NET 10 SDK](https://dotnet.microsoft.com/download)
 - An Azure subscription with a **Microsoft Foundry** resource that has `gpt-6-astra`
   deployed (a region that supports the Responses API)
-- Microsoft Entra ID access to the resource (the sample authenticates with
-  `DefaultAzureCredential`, e.g. `az login` or IDE sign-in), scoped to
-  `https://ai.azure.com/.default`
+- Access to the resource: Microsoft Entra ID by default (the sample authenticates with
+  `DefaultAzureCredential`, e.g. `az login` or IDE sign-in, scoped to
+  `https://ai.azure.com/.default`), or an API key for a first try
 
 ### NuGet packages
 
@@ -73,6 +73,15 @@ Optionally override the deployment name (defaults to `gpt-6-astra`):
 ```powershell
 dotnet user-secrets set "AZURE_OPENAI_DEPLOYMENT" "<your-deployment-name>"
 ```
+
+Optionally use an API key instead of Entra ID. When `AZURE_OPENAI_API_KEY` is set, the sample
+sends it in the `api-key` header; leave it unset to use `DefaultAzureCredential`:
+
+```powershell
+dotnet user-secrets set "AZURE_OPENAI_API_KEY" "<your-api-key>"
+```
+
+Entra ID is the better choice for anything beyond a first try.
 
 ## Running the program
 

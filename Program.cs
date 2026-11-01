@@ -3,6 +3,7 @@ using Azure.Identity;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using OpenAI.Responses;
+using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
@@ -19,11 +20,16 @@ var resourceEndpoint = config["AZURE_AI_ENDPOINT"]
 
 // The Responses API is only reachable on the v1 surface, not the deployments/api-version surface.
 var responsesEndpoint = new Uri($"{resourceEndpoint.TrimEnd('/')}/openai/v1");
-var tokenPolicy = new BearerTokenPolicy(new DefaultAzureCredential(), "https://ai.azure.com/.default");
+
+// Entra ID by default. Set AZURE_OPENAI_API_KEY to send an api-key header instead, handy for a first try.
+var apiKey = config["AZURE_OPENAI_API_KEY"];
+AuthenticationPolicy authPolicy = string.IsNullOrWhiteSpace(apiKey)
+    ? new BearerTokenPolicy(new DefaultAzureCredential(), "https://ai.azure.com/.default")
+    : ApiKeyAuthenticationPolicy.CreateHeaderApiKeyPolicy(new ApiKeyCredential(apiKey), "api-key");
 
 // gpt-6-astra doesn't allow tools + reasoning_effort on /chat/completions; use /responses instead.
 IChatClient chatClient = new ResponsesClient(
-        authenticationPolicy: tokenPolicy,
+        authenticationPolicy: authPolicy,
         options: new ResponsesClientOptions { Endpoint = responsesEndpoint })
     .AsIChatClient(deploymentName)
     .AsBuilder()
